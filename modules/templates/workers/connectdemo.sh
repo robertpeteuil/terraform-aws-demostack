@@ -10,7 +10,7 @@ sudo mkdir /demostack
 
 echo "-->  Git pull Nomad Jobs"
  cd /demostack
- sudo git clone https://github.com/GuyBarros/nomad_jobs
+ sudo git clone https://github.com/robertpeteuil/nomad_jobs
 
 
 if [ ${run_nomad_jobs} == 0 ]
@@ -45,7 +45,7 @@ echo "--> Running  Nomad Job"
 
 fi
 
- 
+
 
 echo "==> Run Nomad is Done!"
 
