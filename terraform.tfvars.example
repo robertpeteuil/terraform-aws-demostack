@@ -3,7 +3,7 @@
 #       https://www.terraform.io/docs/providers/aws/index.html#environment-variables
 # These variables should be set, at minimum. See `variables.tf` for others.
 owner = "exampleowner"
-region = "eu-west-2"
+region = "us-west-2"
 primarynamespace = "primary-example-meanstack"
 secondarynamespace = "secondary-example-meanstack"
 public_key = "ssh-rsa AAAAB3NzaC1y"

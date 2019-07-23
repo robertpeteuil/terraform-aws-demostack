@@ -1,6 +1,6 @@
 variable "region" {
   description = "The region to create resources."
-  default     = "eu-west-2"
+  default     = "us-west-2"
 }
 
 variable "servers" {
@@ -97,37 +97,37 @@ variable "owner" {
 
 variable "created-by" {
   description = "Tag used to identify resources created programmatically by Terraform"
-  default     = "Terraform"
+  default = "Terraform"
 }
 
 variable "sleep-at-night" {
   description = "Tag used by reaper to identify resources that can be shutdown at night"
-  default     = true
+  default = true
 }
 
 variable "TTL" {
   description = "Hours after which resource expires, used by reaper. Do not use any unit. -1 is infinite."
-  default     = "240"
+  default = "240"
 }
 
 variable "vpc_cidr_block" {
   description = "The top-level CIDR block for the VPC."
-  default     = "10.1.0.0/16"
+  default = "10.1.0.0/16"
 }
 
 variable "cidr_blocks" {
   description = "The CIDR blocks to create the workstations in."
-  default     = ["10.1.1.0/24", "10.1.2.0/24"]
+  default = ["10.1.1.0/24", "10.1.2.0/24"]
 }
 
 variable "demo_username" {
   description = "The username to attach to the user demo login as."
-  default     = "demo"
+  default = "demo"
 }
 
 variable "demo_password" {
   description = "The password to attach to the user demo login as."
-  default     = "demo"
+  default = "demo"
 }
 
 variable "public_key" {
@@ -136,17 +136,17 @@ variable "public_key" {
 
 variable "enterprise" {
   description = "do you want to use the enterprise version of the binaries"
-  default     = false
+  default = false
 }
 
 variable "vaultlicense" {
   description = "Enterprise License for Vault"
-  default     = ""
+  default = ""
 }
 
 variable "consullicense" {
   description = "Enterprise License for Consul"
-  default     = ""
+  default = ""
 }
 
 /**variable "awsaccesskey" {
@@ -160,12 +160,12 @@ variable "awssecretkey" {
 
 variable "instance_type_server" {
   description = "The type(size) of data servers (consul, nomad, etc)."
-  default     = "r4.large"
+  default = "r4.large"
 }
 
 variable "instance_type_worker" {
   description = "The type(size) of data servers (consul, nomad, etc)."
-  default     = "t2.xlarge"
+  default = "t2.xlarge"
 }
 
 variable "ca_key_algorithm" {

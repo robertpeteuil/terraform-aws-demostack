@@ -1,6 +1,6 @@
 variable "region" {
   description = "The region to create resources."
-  default     = "eu-west-2"
+  default     = "us-west-2"
 }
 
 variable "namespace" {
@@ -16,12 +16,12 @@ EOH
 
 variable "primary_region" {
   description = "The region to create resources."
-  default = "eu-west-2"
+  default = "us-west-2"
 }
 
 variable "secondary_region" {
   description = "The region to create resources."
-  default = "eu-west-2"
+  default = "us-east-1"
 }
 
 variable "servers" {
@@ -36,67 +36,68 @@ variable "workers" {
 
 variable "consul_url" {
   description = "The url to download Consul."
-  default = "https://releases.hashicorp.com/consul/1.2.2/consul_1.2.2_linux_amd64.zip"
+  default = "https://releases.hashicorp.com/consul/1.5.2/consul_1.5.2_linux_amd64.zip"
 }
 
 variable "consul_ent_url" {
   description = "The url to download Consul."
-  default = "https://releases.hashicorp.com/consul/1.2.2/consul_1.2.2_linux_amd64.zip"
+  default = "https://releases.hashicorp.com/consul/1.5.2/consul_1.5.2_linux_amd64.zip"
 }
 
 variable "packer_url" {
   description = "The url to download Packer."
-  default = "https://releases.hashicorp.com/packer/1.2.5/packer_1.2.5_linux_amd64.zip"
+  default = "https://releases.hashicorp.com/packer/1.4.2/packer_1.4.2_linux_amd64.zip"
 }
 
 variable "sentinel_url" {
   description = "The url to download Sentinel simulator."
-  default = "https://releases.hashicorp.com/sentinel/0.3.0/sentinel_0.3.0_linux_amd64.zip"
+  default = "https://releases.hashicorp.com/sentinel/0.10.3/sentinel_0.10.3_linux_amd64.zip"
 }
 
 variable "consul_template_url" {
   description = "The url to download Consul Template."
-  default = "https://releases.hashicorp.com/consul-template/0.19.5/consul-template_0.19.5_linux_amd64.zip"
+  default = "https://releases.hashicorp.com/consul-template/0.20.0/consul-template_0.20.0_linux_amd64.zip"
 }
 
 variable "envconsul_url" {
   description = "The url to download Envconsul."
-  default = "https://releases.hashicorp.com/envconsul/0.7.3/envconsul_0.7.3_linux_amd64.zip"
+  default = "https://releases.hashicorp.com/envconsul/0.8.0/envconsul_0.8.0_linux_amd64.zip"
 }
 
 variable "fabio_url" {
   description = "The url download fabio."
-  default = "https://github.com/fabiolb/fabio/releases/download/v1.5.7/fabio-1.5.7-go1.9.2-linux_amd64"
+  default = "https://github.com/fabiolb/fabio/releases/download/v1.5.10/fabio-1.5.10-go1.11.1-linux_amd64"
+  # default = "https://github.com/fabiolb/fabio/releases/download/v1.5.7/fabio-1.5.7-go1.9.2-linux_amd64"
 }
 
 variable "hashiui_url" {
   description = "The url to download hashi-ui."
-  default = "https://github.com/jippi/hashi-ui/releases/download/v0.26.1/hashi-ui-linux-amd64"
+  default = "https://github.com/jippi/hashi-ui/releases/download/v1.1.0/hashi-ui-linux-amd64"
 }
 
 variable "nomad_url" {
   description = "The url to download nomad."
-  default = "https://releases.hashicorp.com/nomad/0.8.4/nomad_0.8.4_linux_amd64.zip"
+  default = "https://releases.hashicorp.com/nomad/0.9.3/nomad_0.9.3_linux_amd64.zip"
 }
 
 variable "nomad_ent_url" {
   description = "The url to download nomad."
-  default = "https://releases.hashicorp.com/nomad/0.8.4/nomad_0.8.4_linux_amd64.zip"
+  default = "https://releases.hashicorp.com/nomad/0.9.3/nomad_0.9.3_linux_amd64.zip"
 }
 
 variable "terraform_url" {
   description = "The url to download terraform."
-  default = "https://releases.hashicorp.com/terraform/0.11.7/terraform_0.11.7_linux_amd64.zip"
+  default = "https://releases.hashicorp.com/terraform/0.12.5/terraform_0.12.5_linux_amd64.zip"
 }
 
 variable "vault_url" {
   description = "The url to download vault."
-  default = "https://releases.hashicorp.com/vault/0.11.1/vault_0.11.1_linux_amd64.zip"
+  default = "https://releases.hashicorp.com/vault/1.1.3/vault_1.1.3_linux_amd64.zip"
 }
 
 variable "vault_ent_url" {
   description = "The url to download vault."
-  default = "https://s3-us-west-2.amazonaws.com/hc-enterprise-binaries/vault/ent/0.11.1/vault-enterprise_0.11.1%2Bent_linux_amd64.zip"
+  default = "https://s3-us-west-2.amazonaws.com/hc-enterprise-binaries/vault/ent/1.1.3/vault-enterprise_1.1.3%2Bent_linux_amd64.zip"
 }
 
 variable "primary_namespace" {
@@ -196,7 +197,7 @@ variable "awssecretkey" {
 */
 variable "instance_type_server" {
 description = "The type(size) of data servers (consul, nomad, etc)."
-default = "r4.large"
+default = "r5.large"
 }
 
 variable "instance_type_worker" {
