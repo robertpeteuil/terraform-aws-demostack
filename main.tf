@@ -1,6 +1,6 @@
-//--------------------------MULTICLOUD-IAC------------------------------------------
-# Using a single workspace:
 terraform {
+  required_version = ">= 0.12"
+
   backend "remote" {
     hostname     = "app.terraform.io"
     organization = "multicloud-iac"
@@ -11,8 +11,7 @@ terraform {
   }
 }
 
-// Workspace Data
-data "terraform_remote_state" "multicloud_iac_tls_root_certificate" {
+data "terraform_remote_state" "tls_root_cert" {
   backend = "remote"
 
   config = {
@@ -23,8 +22,6 @@ data "terraform_remote_state" "multicloud_iac_tls_root_certificate" {
     }
   }
 }
-
-//--------------------------------------------------------------------
 
 provider "aws" {
   version = ">= 1.20.0"
@@ -67,18 +64,13 @@ module "primarycluster" {
   instance_type_worker = var.instance_type_worker
   run_nomad_jobs       = var.run_nomad_jobs
 
-  //  ca_key_algorithm   = var.ca_key_algorithm
-  //  ca_private_key_pem = var.ca_private_key_pem
-  //  ca_cert_pem        = var.ca_cert_pem
-
-  # MULTICLOUD-IAC
-  ca_key_algorithm      = data.terraform_remote_state.multicloud_iac_tls_root_certificate.outputs.ca_key_algorithm
-  ca_private_key_pem    = data.terraform_remote_state.multicloud_iac_tls_root_certificate.outputs.ca_private_key_pem
-  ca_cert_pem           = data.terraform_remote_state.multicloud_iac_tls_root_certificate.outputs.ca_cert_pem
-  consul_join_tag_value = "${var.namespace}-${data.terraform_remote_state.multicloud_iac_tls_root_certificate.outputs.consul_join_tag_value}"
-  consul_gossip_key     = data.terraform_remote_state.multicloud_iac_tls_root_certificate.outputs.consul_gossip_key
-  consul_master_token   = data.terraform_remote_state.multicloud_iac_tls_root_certificate.outputs.consul_master_token
-  nomad_gossip_key      = data.terraform_remote_state.multicloud_iac_tls_root_certificate.outputs.nomad_gossip_key
+  ca_key_algorithm      = data.terraform_remote_state.tls_root_cert.outputs.ca_key_algorithm
+  ca_private_key_pem    = data.terraform_remote_state.tls_root_cert.outputs.ca_private_key_pem
+  ca_cert_pem           = data.terraform_remote_state.tls_root_cert.outputs.ca_cert_pem
+  consul_join_tag_value = "${var.namespace}-${data.terraform_remote_state.tls_root_cert.outputs.consul_join_tag_value}"
+  consul_gossip_key     = data.terraform_remote_state.tls_root_cert.outputs.consul_gossip_key
+  consul_master_token   = data.terraform_remote_state.tls_root_cert.outputs.consul_master_token
+  nomad_gossip_key      = data.terraform_remote_state.tls_root_cert.outputs.nomad_gossip_key
 
 }
 
@@ -117,16 +109,12 @@ module "secondarycluster" {
   instance_type_server= var.instance_type_server
   instance_type_worker= var.instance_type_worker
 
-  //  ca_key_algorithm   = var.ca_key_algorithm
-  //  ca_private_key_pem = var.ca_private_key_pem
-  //  ca_cert_pem        = var.ca_cert_pem
-
-  ca_key_algorithm = data.terraform_remote_state.multicloud_iac_tls_root_certificate.ca_key_algorithm
-  ca_private_key_pem = data.terraform_remote_state.multicloud_iac_tls_root_certificate.ca_private_key_pem
-  ca_cert_pem        = data.terraform_remote_state.multicloud_iac_tls_root_certificate.ca_cert_pem
-  consul_join_tag_value = var.namespace}-${data.terraform_remote_state.multicloud_iac_tls_root_certificate.consul_join_tag_value
-  consul_gossip_key = data.terraform_remote_state.multicloud_iac_tls_root_certificate.consul_gossip_key
-  consul_master_token = data.terraform_remote_state.multicloud_iac_tls_root_certificate.consul_master_token
-  nomad_gossip_key = data.terraform_remote_state.multicloud_iac_tls_root_certificate.nomad_gossip_key
+  ca_key_algorithm = data.terraform_remote_state.tls_root_cert.ca_key_algorithm
+  ca_private_key_pem = data.terraform_remote_state.tls_root_cert.ca_private_key_pem
+  ca_cert_pem        = data.terraform_remote_state.tls_root_cert.ca_cert_pem
+  consul_join_tag_value = var.namespace}-${data.terraform_remote_state.tls_root_cert.consul_join_tag_value
+  consul_gossip_key = data.terraform_remote_state.tls_root_cert.consul_gossip_key
+  consul_master_token = data.terraform_remote_state.tls_root_cert.consul_master_token
+  nomad_gossip_key = data.terraform_remote_state.tls_root_cert.nomad_gossip_key
 }
 */
